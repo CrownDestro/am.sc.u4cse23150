@@ -16,7 +16,8 @@ Running:
 ```bash
 node priority_inbox.js
 ```
-<img width="812" height="649" alt="image" src="https://github.com/user-attachments/assets/b14c4450-7db1-4e4c-b133-54dbbe1941c6" />
+<img width="810" height="294" alt="image" src="https://github.com/user-attachments/assets/3a6ec741-6d0c-4ee5-8fda-4b486d2c9e66" />
+
 
 ## Outputs
 
