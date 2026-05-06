@@ -279,3 +279,19 @@ WHERE type = 'placement' AND created_at >= now() - INTERVAL '7 days';
 
 I would suggest to reduce direct reads by adding caching and pushing updates i.e., to store the latest unread count and recent notifications in Redis and only refresh from PostgreSQL every few minutes or on login, but may reuslt in showing stale data to students. Adding pagination and lazy loading in the UI improves response time but may require an extra request when users scroll or clicks on next age. These techniques will improve the performance.
 
+## Stage 5
+Pseudocode:
+```
+function notify_all(student_ids, message):
+  save_notifications_in_db(student_ids, message)
+  enqueue("deliver", {student_ids, message})
+
+worker deliver(payload):
+  for student_id in payload.student_ids:
+    send_email(student_id, payload.message)
+    push_to_app(student_id, payload.message)
+```
+
+## Stage 6
+
+I fetch notifications from the API and rank them by weight and recency, where weight is `placement > result > event`. I then take the top 10 and display them. I used min-heap of size 10 keyed by (weight, timestamp) to get top 10 new one's, so each new notification is either inserted or discarded in $O(\log 10)$ time.
