@@ -255,3 +255,27 @@ VALUES (
   $1, $2, $3, $4, $5, $6::jsonb, $7, $8
 );
 ```
+
+## Stage 3
+
+The original query is logically correct, but it is slow at this scale because it must scan a large table and then sort a big subset before returning
+results. With 5 million notifications, a full scan on studentID plus a filter isRead still touches many rows if no composite index exists and then the
+ORDER triggers a costly sort.
+
+I would change the query and the indexing strategy to composite index that matches the filter and order, 
+for example `(studentID, isRead, createdAt)` so the database can do an index range scan without sorting.
+
+Adding indexes on every column consumes extra storage so it is inefficient. Indexes are best only when they match actual query patterns. the indexes
+should be of a useful small set universally inorder for the queries to be faster and cost effective.
+
+#### Find all students who got a placement notification in the last 7 days.
+
+```sql
+SELECT user_id FROM notifications
+WHERE type = 'placement' AND created_at >= now() - INTERVAL '7 days';
+```
+
+## Stage 4
+
+I would suggest to reduce direct reads by adding caching and pushing updates i.e., to store the latest unread count and recent notifications in Redis and only refresh from PostgreSQL every few minutes or on login, but may reuslt in showing stale data to students. Adding pagination and lazy loading in the UI improves response time but may require an extra request when users scroll or clicks on next age. These techniques will improve the performance.
+
