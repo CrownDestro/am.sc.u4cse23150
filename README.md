@@ -1,4 +1,4 @@
-<img width="812" height="649" alt="image" src="https://github.com/user-attachments/assets/33c13081-9b52-4378-8e5b-9a25dd4b6690" /># **Track:** Full stack
+# **Track:** Full stack
 
 ## Progress
 
@@ -6,10 +6,10 @@
 | -------- | ------- |
 | 1  | Completed  |
 | 2 |  Completed |
-| 3    |     |
-| 4   |     |
-| 5    |     |
-| 6    |     |
+| 3    |  Answered   |
+| 4   |  Answered   |
+| 5    |   Answered  |
+| 6    |   Completed  |
 
 ## Stage 6 command:
 Running:
