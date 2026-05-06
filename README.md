@@ -10,6 +10,7 @@
 | 4   |  Answered   |
 | 5    |   Answered  |
 | 6    |   Completed  |
+| 7    |  Boiler plate done  |
 
 ## ENV:
 ```
