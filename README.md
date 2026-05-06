@@ -1,4 +1,4 @@
-# **Track:** Full stack
+<img width="812" height="649" alt="image" src="https://github.com/user-attachments/assets/33c13081-9b52-4378-8e5b-9a25dd4b6690" /># **Track:** Full stack
 
 ## Progress
 
@@ -11,6 +11,12 @@
 | 5    |     |
 | 6    |     |
 
+## Stage 6 command:
+Running:
+```bash
+node priority_inbox.js
+```
+<img width="812" height="649" alt="image" src="https://github.com/user-attachments/assets/b14c4450-7db1-4e4c-b133-54dbbe1941c6" />
 
 ## Outputs
 
